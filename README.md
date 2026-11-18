@@ -11,17 +11,11 @@
 
 ## 📸 Screenshots & Gameplay
 
-<div align="center">
-  <img src="screenshots/01-game-start.png" width="48%" alt="CalenDit Start Screen" />
-  <img src="screenshots/02-piece-controls.png" width="48%" alt="Piece Controls HUD" />
-</div>
+![CalenDit Start Screen](https://raw.githubusercontent.com/adarsh-panicker/CalenDit/main/screenshots/01-game-start.png)
 
-<div align="center" style="margin-top: 10px;">
-  <img src="screenshots/03-victory-modal.png" width="48%" alt="Victory Celebration & Share Card" />
-  <img src="screenshots/04-archive-picker.png" width="48%" alt="Date Picker Archive Mode" />
-</div>
+![Victory Celebration & Share Card](https://raw.githubusercontent.com/adarsh-panicker/CalenDit/main/screenshots/03-victory-modal.png)
 
-> 🎥 **Demo Walkthrough Video:** Watch the recorded demonstration video at [`recordings/calendit_demo.mp4`](recordings/calendit_demo.mp4).
+> 🎥 **Demo Walkthrough Video:** [Watch the demo video on GitHub](https://github.com/adarsh-panicker/CalenDit/blob/main/recordings/calendit_demo.mp4)
 
 ---
 
