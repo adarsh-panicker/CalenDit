@@ -1,5 +1,5 @@
 {
-  "name": "reddit-game",
+  "name": "calendit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@devvit/web": "^0.15.4",
+    "@devvit/web": "0.15.4",
     "@tailwindcss/vite": "^4.3.5",
     "@types/canvas-confetti": "^1.9.0",
     "canvas-confetti": "^1.9.4",
@@ -28,5 +28,6 @@
     "playwright": "^1.65.1",
     "typescript": "~7.0.2",
     "vite": "^8.3.6"
-  }
+  },
+  "license": "BSD-3-Clause"
 }

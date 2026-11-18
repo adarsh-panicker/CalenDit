@@ -1,7 +1,6 @@
 {
   "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
   "name": "calendit",
-  "version": "0.0.1",
   "post": {
     "dir": "dist",
     "entrypoints": {
@@ -15,5 +14,8 @@
   "permissions": {
     "reddit": true,
     "redis": true
+  },
+  "dev": {
+    "subreddit": "calendit_dev"
   }
 }
