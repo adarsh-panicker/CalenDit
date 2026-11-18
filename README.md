@@ -9,7 +9,21 @@
 
 ---
 
-## 🎯 About CalenDit
+## 📸 Screenshots & Gameplay
+
+<div align="center">
+  <img src="screenshots/01-game-start.png" width="48%" alt="CalenDit Start Screen" />
+  <img src="screenshots/02-piece-controls.png" width="48%" alt="Piece Controls HUD" />
+</div>
+
+<div align="center" style="margin-top: 10px;">
+  <img src="screenshots/03-victory-modal.png" width="48%" alt="Victory Celebration & Share Card" />
+  <img src="screenshots/04-archive-picker.png" width="48%" alt="Date Picker Archive Mode" />
+</div>
+
+> 🎥 **Demo Walkthrough Video:** Watch the recorded demonstration video at [`recordings/calendit_demo.mp4`](recordings/calendit_demo.mp4).
+
+---
 
 **CalenDit** is a tactile, daily calendar polyomino puzzle designed specifically for Reddit communities using the **Devvit Web** platform. 
 
