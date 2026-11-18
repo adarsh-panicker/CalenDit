@@ -75,8 +75,8 @@ Every single calendar combination has between dozens and hundreds of unique vali
 
 ### 1. Installation
 ```bash
-git clone https://github.com/<your-username>/calen-dit.git
-cd calen-dit
+git clone https://github.com/adarsh-panicker/CalenDit.git
+cd CalenDit
 npm install
 ```
 
