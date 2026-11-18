@@ -2,7 +2,7 @@
 
 > **The Daily Date-Polyomino Puzzle built for Reddit's Game of the Day Hackathon 2026**
 
-[![Reddit Devvit](https://img.shields.io/badge/Platform-Reddit%20Devvit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://developers.reddit.com/)
+[![YouTube Demo](https://img.shields.io/badge/YouTube-Watch%20Demo%20Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=t8kAeWw2JLI)
 [![React](https://img.shields.io/badge/Frontend-React%20%2B%20TypeScript-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Bundler-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Styling-Tailwind%20v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -15,7 +15,7 @@
 
 ![Victory Celebration & Share Card](https://raw.githubusercontent.com/adarsh-panicker/CalenDit/main/screenshots/03-victory-modal.png)
 
-> 🎥 **Demo Walkthrough Video:** [Watch the demo video on GitHub](https://github.com/adarsh-panicker/CalenDit/blob/main/recordings/calendit_demo.mp4)
+> 🎥 **Demo Walkthrough Video:** [Watch on YouTube (1m 43s)](https://www.youtube.com/watch?v=t8kAeWw2JLI)
 
 ---
 
