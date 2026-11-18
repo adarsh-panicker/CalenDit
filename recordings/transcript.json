@@ -1,0 +1,60 @@
+{
+  "full_text": "Welcome to Kalendit. The Daily Date Polyomino puzzle built natively for Reddit's developer platform. Every single day, Kalendit locks onto the current date, like November 18th, challenging the community with a fresh tactile geometric puzzle. The rules are deceptively simple. You're given eight polyomino pieces styled in vibrant, reddit colors. Your objective is to rotate, flip and place all eight pieces onto the board so that every single square is covered, except for today's month and day. Mathematically, every single one of the 366 Kalendit dates is guaranteed to have multiple valid solutions. We also built an in-broser depth-first search backtracking solver that ensures fair play and can provide an intelligent hint if a player gets stuck. When the final piece snaps in victory, players see their completion time, move count and daily streak. With one tap, they can copy a spoiler-free emoji grid, grid directly into the Reddit comment section to debate solutions and compare times with other redditors. Finished today's daily, the archive mode lets players solve any past date or celebrate their birthday. Kalendit brings the satisfying feel of a physical desk puzzle into a sticky, daily Reddit ritual. Thanks for watching.",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.0,
+      "text": "Welcome to Kalendit. The Daily Date Polyomino puzzle built natively for Reddit's developer platform."
+    },
+    {
+      "start": 8.0,
+      "end": 21.0,
+      "text": "Every single day, Kalendit locks onto the current date, like November 18th, challenging the community with a fresh tactile geometric puzzle."
+    },
+    {
+      "start": 21.0,
+      "end": 28.0,
+      "text": "The rules are deceptively simple. You're given eight polyomino pieces styled in vibrant, reddit colors."
+    },
+    {
+      "start": 28.0,
+      "end": 42.0,
+      "text": "Your objective is to rotate, flip and place all eight pieces onto the board so that every single square is covered, except for today's month and day."
+    },
+    {
+      "start": 42.0,
+      "end": 51.0,
+      "text": "Mathematically, every single one of the 366 Kalendit dates is guaranteed to have multiple valid solutions."
+    },
+    {
+      "start": 51.0,
+      "end": 63.0,
+      "text": "We also built an in-broser depth-first search backtracking solver that ensures fair play and can provide an intelligent hint if a player gets stuck."
+    },
+    {
+      "start": 63.0,
+      "end": 72.0,
+      "text": "When the final piece snaps in victory, players see their completion time, move count and daily streak."
+    },
+    {
+      "start": 72.0,
+      "end": 84.0,
+      "text": "With one tap, they can copy a spoiler-free emoji grid, grid directly into the Reddit comment section to debate solutions and compare times with other redditors."
+    },
+    {
+      "start": 85.0,
+      "end": 93.0,
+      "text": "Finished today's daily, the archive mode lets players solve any past date or celebrate their birthday."
+    },
+    {
+      "start": 93.0,
+      "end": 102.0,
+      "text": "Kalendit brings the satisfying feel of a physical desk puzzle into a sticky, daily Reddit ritual."
+    },
+    {
+      "start": 102.0,
+      "end": 104.0,
+      "text": "Thanks for watching."
+    }
+  ]
+}

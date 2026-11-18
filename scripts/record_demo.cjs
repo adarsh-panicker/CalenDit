@@ -11,7 +11,7 @@ async function run() {
   if (!fs.existsSync(screenshotsDir)) fs.mkdirSync(screenshotsDir, { recursive: true });
   if (!fs.existsSync(recordingsDir)) fs.mkdirSync(recordingsDir, { recursive: true });
 
-  console.log('Target duration from voiceover: 103.3 seconds');
+  console.log('Target duration from voiceover: 104.0 seconds');
   console.log('Launching browser with 1280x800 video recorder...');
 
   const browser = await chromium.launch({ headless: true });
@@ -28,100 +28,150 @@ async function run() {
   console.log('Navigating to http://localhost:5173...');
   await page.goto('http://localhost:5173', { waitUntil: 'networkidle' });
 
-  // [0:00 - 0:05] Intro: Show the clean board with today's date
+  // [00.00s -> 08.00s]: Welcome to CalenDit. The Daily Date Polyomino puzzle built natively for Reddit's developer platform.
+  console.log('[00s -> 08s] Showing clean start view & branding...');
+  await page.waitForTimeout(4000);
+  await page.mouse.move(640, 70); // Hover header brand
   await page.waitForTimeout(4000);
 
-  // [0:05 - 0:14] Open and showcase "How to Play" tutorial modal
-  console.log('Opening How to Play modal...');
-  const howToPlayBtn = page.locator('button[title="How to Play"]');
-  if (await howToPlayBtn.isVisible()) {
-    await howToPlayBtn.click();
-    await page.waitForTimeout(5000);
-    const closeHowToPlay = page.locator('button:has-text("Got It, Let\'s Play!")');
-    if (await closeHowToPlay.isVisible()) {
-      await closeHowToPlay.click();
-    }
-  }
-  await page.waitForTimeout(2000);
+  // [08.00s -> 21.00s]: Every single day, CalenDit locks onto the current date, like November 18th...
+  console.log('[08s -> 21s] Highlighting today\'s target date (NOV 18)...');
+  await page.mouse.move(735, 70); // Hover date badge
+  await page.waitForTimeout(4000);
 
-  // [0:14 - 0:28] Demonstrate Piece Selection & Orientation (Rotate & Flip)
-  console.log('Demonstrating piece selection, rotation, and flipping...');
-  const firstPiece = page.locator('button[title*="Select"]').first();
+  // Hover NOV on the board (row 1, col 4)
+  const novCell = page.locator('button:text-is("NOV")');
+  if (await novCell.isVisible()) {
+    await novCell.hover();
+  }
+  await page.waitForTimeout(4000);
+
+  // Hover 18 on the board (row 4, col 3)
+  const day18Cell = page.locator('button:text-is("18")');
+  if (await day18Cell.isVisible()) {
+    await day18Cell.hover();
+  }
+  await page.waitForTimeout(5000);
+
+  // [21.00s -> 28.00s]: The rules are deceptively simple. You're given eight polyomino pieces styled in vibrant, reddit colors.
+  console.log('[21s -> 28s] Showcasing the 8 vibrant pieces in the tray...');
+  const pieceTray = page.locator('span:has-text("Piece Tray")');
+  if (await pieceTray.isVisible()) {
+    await pieceTray.hover();
+  }
+  await page.waitForTimeout(3000);
+
+  const pieceButtons = page.locator('button[title*="Select"]');
+  const count = await pieceButtons.count();
+  for (let i = 0; i < Math.min(count, 4); i++) {
+    await pieceButtons.nth(i).hover();
+    await page.waitForTimeout(1000);
+  }
+
+  // [28.00s -> 42.00s]: Your objective is to rotate, flip and place all eight pieces onto the board...
+  console.log('[28s -> 42s] Selecting, rotating, flipping, and placing piece 1...');
+  const firstPiece = pieceButtons.first();
   await firstPiece.click();
-  await page.waitForTimeout(1500);
+  await page.waitForTimeout(2000);
 
   const rotateBtn = page.locator('button:has-text("Rotate")');
   await rotateBtn.click();
-  await page.waitForTimeout(1200);
+  await page.waitForTimeout(1800);
   await rotateBtn.click();
-  await page.waitForTimeout(1200);
+  await page.waitForTimeout(1800);
 
   const flipBtn = page.locator('button:has-text("Flip")');
   await flipBtn.click();
-  await page.waitForTimeout(1500);
-  await flipBtn.click();
-  await page.waitForTimeout(1200);
+  await page.waitForTimeout(2000);
 
-  // Move mouse over board to show ghost preview
-  await page.mouse.move(640, 350);
-  await page.waitForTimeout(1500);
+  // Hover over the board showing the ghost placement preview
+  await page.mouse.move(550, 280);
+  await page.waitForTimeout(2000);
 
-  // Deselect piece
-  const deselectBtn = page.locator('button[title="Deselect"]');
-  await deselectBtn.click();
-  await page.waitForTimeout(1500);
-
-  // [0:28 - 0:72] Step-by-step piece placements using solver hints (~5.5s per piece)
-  console.log('Demonstrating gameplay and mathematical solver hints...');
+  // Use solver hint to place piece 1 cleanly
   const hintBtn = page.locator('button[title*="hint"]');
+  await hintBtn.click();
+  await page.waitForTimeout(4400);
 
-  for (let i = 1; i <= 8; i++) {
-    console.log(`Placing piece ${i}/8 into position...`);
-    await hintBtn.click();
-    // Stagger placements evenly across the voiceover explanation
-    await page.waitForTimeout(4800);
-  }
+  // [42.00s -> 51.00s]: Mathematically, every single one of the 366 CalenDit dates is guaranteed to have multiple valid solutions.
+  console.log('[42s -> 51s] Placing piece 2 and piece 3...');
+  await hintBtn.click(); // Piece 2
+  await page.waitForTimeout(4500);
+  await hintBtn.click(); // Piece 3
+  await page.waitForTimeout(4500);
 
-  // [0:72 - 0:88] Victory explosion & Reddit comment card
-  console.log('Victory modal and confetti...');
-  await page.waitForSelector('text=Puzzle Solved!', { timeout: 6000 });
-  await page.waitForTimeout(4000);
-
-  console.log('Clicking Share Score in Comments...');
-  const shareBtn = page.locator('button:has-text("Share Score in Comments")');
-  if (await shareBtn.isVisible()) {
-    await shareBtn.click();
-    await page.waitForTimeout(4000);
-  }
-
-  // [0:88 - 1:03] Demonstrate Archive / Date Picker mode
-  console.log('Opening Archive / Date Picker modal...');
-  const archiveBtn = page.locator('button:has-text("Play Another Date")');
-  await archiveBtn.click();
+  // [51.00s -> 63.00s]: We also built an in-browser depth-first search backtracking solver...
+  console.log('[51s -> 63s] Solver demonstration: placing pieces 4, 5, 6, 7...');
+  await hintBtn.click(); // Piece 4
+  await page.waitForTimeout(3000);
+  await hintBtn.click(); // Piece 5
+  await page.waitForTimeout(3000);
+  await hintBtn.click(); // Piece 6
+  await page.waitForTimeout(3000);
+  await hintBtn.click(); // Piece 7
   await page.waitForTimeout(3000);
 
-  // Select DEC inside the archive modal
-  const decBtn = page.locator('div:has-text("Select Month") ~ div button:has-text("DEC")').first();
-  if (await decBtn.isVisible()) {
-    await decBtn.click();
-    await page.waitForTimeout(1500);
-  }
+  // [63.00s -> 72.00s]: When the final piece snaps in victory, players see their completion time, move count and daily streak.
+  console.log('[63s -> 72s] Final piece snaps into position -> VICTORY!');
+  await hintBtn.click(); // Piece 8 - Final snap!
+  await page.waitForSelector('text=Puzzle Solved!', { timeout: 8000 });
+  await page.waitForTimeout(2000);
 
-  // Select 25 inside the archive modal
-  const day25Btn = page.locator('div:has-text("Select Day") ~ div button:text-is("25")').first();
-  if (await day25Btn.isVisible()) {
-    await day25Btn.click();
+  // Hover over stats telemetry card
+  const timeStat = page.locator('.fixed span:has-text("Time")').first();
+  if (await timeStat.isVisible()) await timeStat.hover();
+  await page.waitForTimeout(3000);
+
+  const streakStat = page.locator('.fixed span:has-text("Streak")').first();
+  if (await streakStat.isVisible()) await streakStat.hover();
+  await page.waitForTimeout(4000);
+
+  // [72.00s -> 85.00s]: With one tap, they can copy a spoiler-free emoji grid directly into the Reddit comment section...
+  console.log('[72s -> 85s] Clicking Share Score in Comments...');
+  const shareBtn = page.locator('button:has-text("Share Score in Comments")');
+  if (await shareBtn.isVisible()) {
+    await shareBtn.hover();
     await page.waitForTimeout(2000);
+    await shareBtn.click();
+    await page.waitForTimeout(6000);
+  }
+  await page.waitForTimeout(5000);
+
+  // [85.00s -> 93.00s]: Finished today's daily, the archive mode lets players solve any past date or celebrate their birthday.
+  console.log('[85s -> 93s] Opening Archive / Date Picker modal...');
+  const archiveBtn = page.locator('button:has-text("Play Another Date")');
+  if (await archiveBtn.isVisible()) {
+    await archiveBtn.click();
+    await page.waitForTimeout(2500);
+
+    // Select DEC
+    const decBtn = page.locator('div:has-text("Select Month") ~ div button:has-text("DEC")').first();
+    if (await decBtn.isVisible()) {
+      await decBtn.click();
+      await page.waitForTimeout(1500);
+    }
+
+    // Select 25
+    const day25Btn = page.locator('div:has-text("Select Day") ~ div button:text-is("25")').first();
+    if (await day25Btn.isVisible()) {
+      await day25Btn.click();
+      await page.waitForTimeout(2000);
+    }
+
+    // Click Load Puzzle
+    const loadBtn = page.locator('button:has-text("Load Puzzle for")').first();
+    if (await loadBtn.isVisible()) {
+      await loadBtn.click();
+      await page.waitForTimeout(2000);
+    }
   }
 
-  // Load puzzle
-  const loadBtn = page.locator('button:has-text("Load Puzzle for")').first();
-  if (await loadBtn.isVisible()) {
-    await loadBtn.click();
-    await page.waitForTimeout(4000);
-  }
+  // [93.00s -> 104.00s]: CalenDit brings the satisfying feel of a physical desk puzzle into a sticky, daily Reddit ritual. Thanks for watching.
+  console.log('[93s -> 104s] Outro: Showing new loaded puzzle board & tray...');
+  await page.mouse.move(640, 400);
+  await page.waitForTimeout(11000);
 
-  console.log('Finalizing recording...');
+  console.log('Finalizing video recording at ~104s...');
   const video = page.video();
   await context.close();
   await browser.close();
@@ -143,22 +193,17 @@ async function run() {
       } catch (err) {
         console.error('ffmpeg voiceover merge error:', err);
       }
-    } else {
-      execSync(`ffmpeg -y -i "${rawVideoPath}" -c:v libx264 -pix_fmt yuv420p -r 30 "${mp4Path}"`, {
-        stdio: 'inherit',
-      });
     }
 
-    // Clean up temporary webm file
     try {
       if (fs.existsSync(rawVideoPath)) fs.unlinkSync(rawVideoPath);
     } catch {}
   }
 
-  console.log('Done!');
+  console.log('Record and sync completed successfully!');
 }
 
 run().catch((err) => {
-  console.error('Recording run error:', err);
+  console.error('Error during recording:', err);
   process.exit(1);
 });
